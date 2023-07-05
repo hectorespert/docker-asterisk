@@ -23,3 +23,9 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Push image
+      run: |
+        VERSION=$(git describe --always --tags)
+        docker tag blackleg/asterisk blackleg/asterisk:$VERSION
+        docker push blackleg/asterisk:$VERSION
+        docker push blackleg/asterisk:latest
