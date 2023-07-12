@@ -54,3 +54,4 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: blackleg/asterisk
+          short-description: ${{ github.event.repository.description }}
