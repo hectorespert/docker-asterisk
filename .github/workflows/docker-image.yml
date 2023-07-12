@@ -36,14 +36,13 @@ jobs:
         with:
           images: blackleg/asterisk
 
-#    - name: Build the Docker image
-#      run: docker build . --file Dockerfile --tag blackleg/asterisk --progress=plain
-#    - name: Test image
-#      run: docker run --rm blackleg/asterisk asterisk -V
-#    - name: Push image
-#      if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
-#      run: |
-#        VERSION=$(git describe --always --tags)
-#        docker tag blackleg/asterisk blackleg/asterisk:$VERSION
-#        docker push blackleg/asterisk:$VERSION
-#        docker push blackleg/asterisk:latest
+      - name: Build and push Docker image
+        id: build-and-push
+        uses: docker/build-push-action@@v4
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
