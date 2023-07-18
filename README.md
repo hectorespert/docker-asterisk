@@ -1,5 +1,9 @@
 # Asterisk Docker Image
 
+Asterisk docker image preconfigured for [testcontainers-spring-boot-asterisk](https://github.com/hectorespert/testcontainers-spring-boot-asterisk)
+
+## Development
+
 ### Build
 
 ```bash
