@@ -35,6 +35,8 @@ jobs:
           images: blackleg/asterisk
           tags: |
             type=edge,branch=main
+            type=sha
+            type=sha,format=long
 
       - name: Build and push Docker image
         id: build-and-push
