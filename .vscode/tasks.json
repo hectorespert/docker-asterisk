@@ -1,0 +1,33 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build docker file",
+        "type": "shell",
+        "command": "docker build . --file Dockerfile --tag blackleg/asterisk --progress=plain",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Run docker container",
+        "type": "shell",
+        "command": "docker run -it --rm -p 5038:5038 -p 8088:8088 blackleg/asterisk",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
